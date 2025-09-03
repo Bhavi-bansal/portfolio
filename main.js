@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Register GSAP plugins
+    
     gsap.registerPlugin(ScrollTrigger);
 
-    // --- GSAP ANIMATIONS ---
+    
     const initAnimations = () => {
-        // This animation code looks good and doesn't need changes.
+        
         gsap.timeline()
             .to('.artist-image', { duration: 1.2, opacity: 1, scale: 1, ease: "power3.out" }, 0)
             .to('.artist-name-part', { duration: 0.8, opacity: 1, y: 0, ease: "power2.out" }, "-=0.6")
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .to('.scroll-indicator, .social-links-bottom', { duration: 0.6, opacity: 1, ease: "power2.out" }, "-=0.2");
     };
 
-    // --- NAVIGATION AND THEME UPDATES ---
+    
     const updateNavigationAndTheme = () => {
         const mainContainer = document.querySelector('.main-container');
         const navbar = document.querySelector('.navbar');
@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const currentSection = document.getElementById(activeSectionId);
         if (currentSection && (currentSection.id === 'art' || currentSection.id === 'contact')) {
-             // You might need to add a 'dark-theme' class to your CSS for this to work
-            navbar.style.color = 'white'; // Example of a theme change
+             
+            navbar.style.color = 'white'; 
             document.querySelectorAll('.nav-link').forEach(l => l.style.color = 'white');
         } else {
             navbar.style.color = 'var(--text-dark)';
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- ART CAROUSEL (SWIPER) ---
+    
     const setupArtCarousel = () => {
         const swiper = new Swiper('.art-carousel', {
             effect: 'coverflow',
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 modifier: 1,
                 slideShadows: false,
             },
-            // FIX #1: Link the navigation buttons to the swiper instance
+            
             navigation: {
                 nextEl: '.nav-next',
                 prevEl: '.nav-prev',
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // --- EVENT LISTENERS ---
+   
     const addEventListeners = () => {
         const mainContainer = document.querySelector('.main-container');
         const homeSection = document.querySelector('#home');
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mainContainer.addEventListener('scroll', updateNavigationAndTheme);
         }
         
-        // FIX #2: Use scrollTo on the mainContainer, not the window
+       
         if (downArrow && mainContainer && aboutSection) {
             downArrow.addEventListener('click', () => {
                 mainContainer.scrollTo({
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // FIX #3: Use scrollTo on the mainContainer for the up arrow as well
+        
         if (upArrow && mainContainer && homeSection) {
             upArrow.addEventListener('click', () => {
                 mainContainer.scrollTo({
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // --- INITIALIZE EVERYTHING ---
+    
     initAnimations();
     setupArtCarousel();
     addEventListeners();
